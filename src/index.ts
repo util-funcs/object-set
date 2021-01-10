@@ -1,7 +1,7 @@
 export default function set(obj: Record<string, any> = {}, path: string, value: any) {
   const [key, ...keys] = path.split('.');
   if (isPrototypePolluted(key))
-    return
+    return;
   const pointer = obj[key] || {};
   obj[key] =
     keys.length < 1
@@ -11,6 +11,6 @@ export default function set(obj: Record<string, any> = {}, path: string, value: 
 }
 
 function isPrototypePolluted(key: any) {
-  const blackLists: any = ['__proto__', 'constructor', 'prototype']
+  const blackLists: any = ['__proto__', 'constructor', 'prototype'];
   return blackLists.includes(key);
 }
