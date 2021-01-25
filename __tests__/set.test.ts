@@ -28,3 +28,8 @@ it('test with object reference', () => {
   expect(data.a.b.c).toEqual(['Hello', 'World']);
   expect(sameReference === data).toEqual(true);
 });
+
+it('test with magic attribute', () => {
+  set(data, '__proto__.polluted', true);
+  expect(({} as any).polluted).toEqual(undefined);
+})
